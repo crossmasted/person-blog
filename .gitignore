@@ -1,0 +1,20 @@
+# 依赖
+node_modules/
+
+# 构建产物
+docs/.vitepress/dist/
+dist/
+dist.tar.gz
+
+# 含敏感凭据的交接文档（服务器密码 / API Key），不上传
+rag部署转blog部署.md
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# vscode
+.vscode/
+
+# 临时
+*.log

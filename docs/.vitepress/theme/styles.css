@@ -1,0 +1,117 @@
+/*
+ * 全站动效与个性化样式
+ */
+
+/* ---------- 关于我：头像 ---------- */
+.about-portrait {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--vp-c-bg), var(--vp-c-bg)) padding-box,
+    linear-gradient(120deg, #5b8cff, #7c6cff) border-box;
+  box-shadow: 0 12px 36px rgba(91, 140, 255, 0.28);
+  margin: 8px 0 12px;
+  display: block;
+}
+
+/* ---------- 页面切换：内容淡入 ---------- */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.vp-doc, .VPContent .VPDoc > div {
+  animation: pageIn 0.42s ease both;
+}
+
+/* ---------- 首页特性卡片滚动渐入 ---------- */
+@keyframes featureIn {
+  from { opacity: 0; transform: translateY(26px); }
+  to { opacity: 1; transform: none; }
+}
+.vp-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 960px;
+  margin: 8vh auto 0;
+  padding: 0 20px 48px;
+}
+.feature-card {
+  background: var(--vp-c-bg-alt, #1a1d27);
+  border: 1px solid rgba(128, 128, 128, 0.12);
+  border-radius: 16px;
+  padding: 26px 24px;
+  animation: featureIn 0.7s ease both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.25s; }
+.feature-card:nth-child(3) { animation-delay: 0.4s; }
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: #5b8cff66;
+  box-shadow: 0 16px 40px rgba(91, 140, 255, 0.18);
+}
+.feature-icon { font-size: 34px; line-height: 1; }
+.feature-title {
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--vp-c-text-1, #e6e6e6);
+}
+.feature-detail {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2, #9aa0b0);
+}
+.feature-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vp-c-brand-1, #5b8cff);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.feature-link:hover { color: var(--vp-c-brand-2, #6a92ef); }
+
+/* ---------- 链接与按钮 hover 反馈 ---------- */
+.VPButton.brand {
+  background-image: linear-gradient(120deg, #5b8cff, #7c6cff);
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+.VPButton.brand:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 28px rgba(91,140,255,.4);
+}
+
+/* 文档正文图片圆角 */
+.vp-doc img { border-radius: 8px; }
+
+/* ---------- 全站强调色（强调文本） ---------- */
+:root {
+  --vp-c-brand-1: #5b8cff;
+  --vp-c-brand-2: #4a78e8;
+  --vp-c-brand-3: #3a66cc;
+  --vp-c-brand-soft: rgba(91,140,255,0.28);
+}
+html.dark {
+  --vp-c-brand-1: #7ca2ff;
+  --vp-c-brand-2: #6a92ef;
+  --vp-c-brand-3: #5a82df;
+  --vp-c-brand-soft: rgba(124,162,255,0.24);
+}
+
+/* 页面主体顶部进度条预留（贴顶） */
+.vp-loading-bar { z-index: 9999; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-doc, .VPHome .VPFeatures .VPFeature, .typed-home, .about-portrait {
+    animation: none !important;
+  }
+}
