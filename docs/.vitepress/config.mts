@@ -3,14 +3,14 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: 'zh-CN',
-  title: '张泽的博客',
+  title: '张彭城的博客',
   description: '前端 / 后端开发工程师的个人技术博客与作品集，记录 AI 编程与项目实践',
   cleanUrls: true,
 
   head: [
-    // 自定义浏览器标签图标（复用头像照片）
-    ['link', { rel: 'icon', type: 'image/jpeg', href: '/avatar.jpg' }],
-    ['link', { rel: 'apple-touch-icon', href: '/avatar.jpg' }],
+    // 自定义浏览器标签图标（使用专属 logo 狗头）
+    ['link', { rel: 'icon', type: 'image/jpeg', href: '/dog.jpg' }],
+    ['link', { rel: 'apple-touch-icon', href: '/dog.jpg' }],
     // 站点主题强调色（accent color，覆盖 VitePress 默认紫蓝）
     ['meta', { name: 'theme-color', content: '#5b8cff' }],
   ],
@@ -67,7 +67,7 @@ export default defineConfig({
 
     footer: {
       message: 'Powered by VitePress',
-      copyright: 'Copyright © 2026 张泽',
+      copyright: 'Copyright © 2026 张彭城',
     },
   },
 })

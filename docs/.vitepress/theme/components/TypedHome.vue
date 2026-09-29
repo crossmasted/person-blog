@@ -1,11 +1,11 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// 大标题「张泽」逐字打出
-const nameFull = '张泽'
-const revealed = ref('')
-// 光标后是否在渲染文字
-const caretOn = ref(true)
+// 大标题「张彭城」直接展示（不做打字机）
+const nameFull = '张彭城'
+const revealed = ref(nameFull)
+// 光标是否在渲染文字
+const caretOn = ref(false)
 
 // 副标题轮换句子（打字 → 停顿 → 删除 → 下一句）
 const lines = [
@@ -19,18 +19,8 @@ const lineIndex = ref(0)
 const visibleCount = ref(0)
 const deleting = ref(false)
 
-let nameTimer = null
 let caretsTimer = null
 let ticker = null
-
-function startNameType() {
-  let i = 0
-  nameTimer = setInterval(() => {
-    i++
-    revealed.value = nameFull.slice(0, i)
-    if (i >= nameFull.length) clearInterval(nameTimer)
-  }, 220)
-}
 
 function toggleCaret() {
   caretOn.value = !caretOn.value
@@ -59,13 +49,12 @@ function tickLine() {
 }
 
 onMounted(() => {
-  startNameType()
+  // 大标题直接展示，不再逐字打字
   caretsTimer = setInterval(toggleCaret, 500)
   ticker = setInterval(tickLine, deleting.value ? 55 : 130)
 })
 
 onUnmounted(() => {
-  clearInterval(nameTimer)
   clearInterval(caretsTimer)
   clearInterval(ticker)
 })
@@ -76,11 +65,11 @@ onUnmounted(() => {
     <div class="hero-inner">
       <div class="avatar-wrap">
         <div class="avatar-glow" />
-        <img class="avatar" src="/avatar.jpg" alt="张泽" />
+        <img class="avatar" src="/dog.jpg" alt="localhost" />
       </div>
 
       <div class="title-wrap">
-        <span class="typed-name">{{ revealed }}</span><span class="caret" :class="{ off: !caretOn }">▌</span>
+        <span class="typed-name">{{ revealed }}</span>
       </div>
 
       <p class="typed-tagline">
